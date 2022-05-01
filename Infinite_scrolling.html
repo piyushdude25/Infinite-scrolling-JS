@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Scrolling JS</title>
+    <style>
+        /* #container{
+            height: 100%;
+            width: 500px;
+            background-color:rgb(0, 100, 38);
+        } */
+        #Iscroll{
+            height: 400px;
+            border:15px solid rgb(139, 36, 36);
+            border-radius: 10px;
+            overflow-y:scroll;
+            /* overflow-x:scroll; */
+            width:350px;
+            text-align:center;
+            margin:auto;
+            margin-top:120px;
+           
+        }
+    </style>
+</head>
+<body>
+    <div id="Iscroll"></div>
+</body>
+</html>
+<script>
+     let count = 1;
+// function showList()  {
+
+  const showList=()=> {
+
+  for (let i = 0;  i < 25; i++) {
+    
+    let name = document.createElement("h3");
+    name.innerText =  `Masai Student ${count++}`;
+    // name.setAttribute("class", "list");
+    document.querySelector("#Iscroll").append(name);
+  }
+}
+
+showList();
+
+const setTime= () => {
+        setTimeout(()=>{
+          showList()
+        },300)
+    }
+
+let container = document.querySelector("#Iscroll");
+
+container.onscroll = () => {
+  if( container.scrollTop + container.offsetHeight >= container.scrollHeight ){
+  
+  setTime()
+
+
+// showList();
+  // const scrollY = container.scrollHeight - container.scrollTop;
+  // const height = container.offsetHeight;
+  // const offset = height - scrollY;
+
+  // console.log(offset);
+
+  // if (offset >= 1) {
+  //   showList();
+  // }
+
+}
+
+};
+</script>
